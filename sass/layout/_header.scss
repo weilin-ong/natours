@@ -1,0 +1,49 @@
+.header {
+  height: 85vh; // always stay 85% of the viewport of any browser size
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url(../img/hero-small.jpg); //we want the gradient to stay on top of the other, hence it's the 1st input
+  background-size: cover; //whatever the browser size is, it always fit inside the box
+  background-position: top; //keep top part non-crop when browser shrinks
+  position: relative;
+
+  @supports (clip-path: polygon(0 0, 100% 0, 100% 75vh, 0% 100%)) or
+    (-webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0% 100%)) {
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0% 100%);
+    height: 95vh;
+  }
+
+  @media only screen and (min-resolution: 192dpi) and (min-width: $xs),
+    (min-device-pixel-ratio: 2) and (min-width: $xs),
+    (min-width: $xl) {
+    //if resolution higher than 192 dots per inch which means hi-res
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)
+      ),
+      url(../img/hero.jpg);
+  }
+
+  @include respond($xs) {
+    clip-path: polygon(0 0, 100% 0, 100% 85vh, 0% 100%);
+  }
+
+  &__logo {
+    width: 6rem;
+  }
+
+  &__logo-box {
+    position: absolute;
+    top: 4%; /*relative to header aka parent's width*/
+    left: 1.5%; /*relative to header aka parent's heigh*/
+  }
+
+  &__text-box {
+    @include center;
+    text-align: center;
+  }
+}

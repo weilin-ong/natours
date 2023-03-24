@@ -1,0 +1,170 @@
+.navigation{
+
+    &__checkbox{
+        display: none;
+    }
+
+    &__button{
+        width: 7rem;
+        height: 7rem; //half rem bigger to cover backgroud
+        border-radius: 50%;
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+        background-color: $color-white;
+        position: fixed;
+        top: 6rem;
+        right:6rem;
+        z-index: 30;
+        text-align: center;
+        cursor: pointer;
+
+        @include respond($sm){
+            top:3.5rem;
+            right:3.5rem
+        }
+
+        @include respond($xs){
+            top:3rem;
+            right:3rem;
+        }
+    }
+
+    &__icon{
+        position: relative;
+        margin-top:3.5rem;
+
+        &,
+        &::before,
+        &::after{
+            content: "";
+            width: 3rem;
+            height: 2px; //px wont change like rem
+            background-color: $color-grey-darkest;
+            display: inline-block;
+        }
+
+        &::before,
+        &::after{
+            content: "";
+            position: absolute;
+            left: 0;
+            transition: all .3s;
+        }
+
+        &::before{
+            top: -.8rem;
+        }
+        &::after{
+            top: .8rem;
+        }
+    }
+
+    &__button:hover &__icon::before{
+        top:-1rem;
+    }
+
+    &__button:hover &__icon::after{
+        top:1rem;
+    }
+
+    &__background{
+        width: 6rem;
+        height: 6rem;
+        border-radius: 50%;
+        position: fixed;
+        top: 6.5rem;
+        right:6.5rem;
+        background-image: radial-gradient($color-primary-light, $color-primary-dark);
+        z-index: 10;
+        transition: transform .5s cubic-bezier(0.22, 1, 0.36, 1);
+
+        @include respond($sm){
+            top:4rem;
+            right:4rem
+        }
+
+        @include respond($xs){
+            top: 3.5rem;
+            right:3.5rem;
+        }
+    }
+
+    &__nav{
+        height: 100vh;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 20;
+        transition: all .4s cubic-bezier(0.85, 0, 0.15, 1);
+
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    &__list{
+        @include center;
+        list-style: none;
+        text-align: center;
+    }
+
+    &__item{
+        margin: 1rem;
+    }
+
+    &__link{
+        &:link,
+        &:visited{
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: $color-white;
+            font-size: 3rem;
+            font-weight: 300;
+            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%); //solid color gradient
+            background-size: 250%;
+            transition: all .5s;
+
+            span{
+                margin-right: 1rem;
+            }
+
+            @include respond($xs){
+                font-size: 2.5rem;
+            }
+        }
+
+        &:hover,
+        &:active{
+            background-position: 100%;
+            color:$color-primary;
+            transform: translateX(1rem);
+        } 
+    }
+
+    &__checkbox:checked ~ &__background{
+        transform: scale(100);
+    }
+
+    &__checkbox:checked ~ &__nav{
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &__checkbox:checked ~ &__button &__icon{
+
+        &{
+            background-color: transparent; //make middle line disappear
+        }
+
+        &::before{
+            top:0;
+            transform: rotate(135deg); //same as 45deg
+        }
+
+        &::after{
+            top:0;
+            transform: rotate(-135deg);
+        }
+    }
+}

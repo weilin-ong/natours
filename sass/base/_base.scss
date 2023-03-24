@@ -1,0 +1,51 @@
+*,
+*::after,
+*::before{
+    margin:0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html{
+    font-size: 62.5%; //10px
+    /* rem units are based on the font-size of the html element, not the body element.  */
+    /* % instead of px for user's flexibility on changing font size on browser, not including zoom in/out*/
+
+
+    // @include respond($xs){
+    //     font-size: 50%;
+    // }
+
+    @include respond($xl){
+        font-size: 75%; //12px
+    }
+
+    @include respond($md){
+        font-size: 56.25%; //9px
+    }
+
+    @include respond($sm){
+        font-size: 50%; //8px
+    }
+
+}
+
+body{
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    color: $color-grey-dark;
+    padding: 3rem; /*relative to html aka parent's width*/
+
+    box-sizing: border-box;
+
+    @include respond($sm){
+        padding: 0;;
+    }
+
+}
+
+::selection{
+    background-color: $color-primary-dark;
+    color: $color-white;
+}

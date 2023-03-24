@@ -1,0 +1,60 @@
+.row{
+    max-width: $grid-width-lg;
+    margin: 0 auto;
+
+    &:not(:last-child){ 
+        margin-bottom: $gutter-lg;
+
+        @include respond($sm){
+            margin-bottom: $gutter-sm;
+        }
+    }
+
+    @include clearfix;
+
+    @include respond($sm){
+        max-width: $grid-width-sm;
+    }
+
+    @include respond($xs){
+        padding: 0 1.5rem;
+    }
+
+    .col{
+        float: left;
+
+        &:not(:last-child){
+            margin-right: $gutter-sm;
+
+            @include respond($sm){
+                margin-right: 0;
+                margin-bottom: $gutter-sm;
+            }
+        }
+
+        &__1-of-2, &__2-of-4{
+            width: calc((100% - #{$gutter-sm}) /2); 
+        }
+
+        &__1-of-3{
+            width: calc((100% - 2 * #{$gutter-sm}) /3);
+        }
+
+        &__2-of-3{
+            width: calc(((100% - 2 * #{$gutter-sm}) /3 * 2) + #{$gutter-sm});
+        }
+
+        &__1-of-4{
+            width: calc((100% - 3 * #{$gutter-sm}) /4);
+        }
+
+        &__3-of-4{
+            width: calc(((100% - 3 * #{$gutter-sm}) /4 * 3) + 2 * #{$gutter-sm});
+        }
+
+        @include respond($sm){
+            width: 100%; //each row has only 1 column
+        }
+    }
+}
+

@@ -1,0 +1,76 @@
+.heading-primary{
+    color:$color-white;
+    text-transform: uppercase;
+    backface-visibility: hidden; /* to hide the backside*/
+
+    &__text{
+        display: block; //to seperate the words
+
+        &--main{
+            font-size: 6rem; //change back to 6rem later
+            font-weight: 400;
+            letter-spacing: 3.5rem;
+            
+        
+            animation: moveInLeft 1s ease-out;
+            /* animation-name: moveInLeft;
+            animation-duration: 1s;
+            animation-timing-function: ease-out;*/
+
+            @include respond($xs){
+                font-size: 5rem;
+                letter-spacing: 1rem;
+            }
+        }
+
+        &--sub{
+            font-size: 2rem; //change back to 2rem later
+            font-weight: 700;
+            letter-spacing: 1.5rem;
+        
+            animation: moveInRight 1s ease-out;
+
+            @include respond($xs){
+                letter-spacing: .5rem;
+            }
+        }
+    }  
+}
+
+.heading-secondary{
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-block;
+    background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+    color: transparent;
+    -webkit-background-clip: text; // prefixed version 
+    background-clip: text; // unprefixed version
+    transition: all .2s;
+
+    @include respond($sm){
+        font-size: 3rem;
+    }
+
+    @include respond($xs){
+        font-size: 2.5rem;
+    }
+
+    &:hover{
+        transform: skewY(-1deg) scale(1.05);
+    }
+}
+
+.heading-tertiary{
+    font-size: $default-font-size;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.paragraph{
+    font-size: $default-font-size;
+
+    &:not(:last-child){
+        margin-bottom: 3rem;
+    }
+}

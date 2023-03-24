@@ -1,0 +1,192 @@
+.card{
+    perspective: 150rem;
+    -moz-perspective: 150rem;
+    position: relative;
+    height: 52rem;
+
+    &__content{
+        border-radius: 3px;
+        overflow: hidden; //to avoid child overflow parent, but since child has clip path which breaks parent's overflow, this can be deleted here
+        transition: all .8s ease;
+        height: 52rem;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        backface-visibility: hidden;
+        box-shadow: 0 1rem 4rem rgba($color-black, 0.2);
+
+        &--front{
+            background-color: $color-white; 
+        }
+
+        &--back{
+            transform: rotateY(180deg);
+
+            &-1{
+                background-image: linear-gradient(to right bottom, $color-orange-light, $color-orange)
+            }
+
+            &-2{
+                background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary)
+            }
+            
+            &-3{
+                background-image: linear-gradient(to right bottom, $color-blue-light, $color-blue)
+            }
+        }
+    }
+
+    //FRONT
+    &__picture{
+        height: 23rem;
+        background-size: cover;
+        background-blend-mode: screen;
+        clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 0% 100%); //overflow wont work with clip-path
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        
+        &--1{
+            background-image:linear-gradient(to right bottom, $color-orange-light, $color-orange),
+            url(../img/nat-5.jpg);
+        }
+
+        &--2{
+            background-image:linear-gradient(to right bottom, $color-primary-light, $color-primary),
+            url(../img/nat-6.jpg);
+        }
+
+        &--3{
+            background-image:linear-gradient(to right bottom, $color-blue-light, $color-blue),
+            url(../img/nat-7.jpg);
+        }
+    }
+
+    &__heading{
+        font-size: 2.8rem;
+        font-weight: 300;
+        color: $color-white;
+        position: absolute;
+        top:12rem;
+        right:2rem;
+        text-transform: uppercase;
+        text-align: right;
+        width: 65%;
+    }
+
+    &__heading-span{
+        padding: 0.5rem 1.2rem;
+        box-decoration-break: clone;
+
+        &--1{
+            background-image: linear-gradient(to right bottom, 
+            rgba($color-orange-light, 0.7), 
+            rgba($color-orange, 0.7));
+        }
+
+        &--2{
+            background-image: linear-gradient(to right bottom, 
+            rgba($color-primary-light, 0.7),
+            rgba($color-primary, 0.7));
+        }
+
+        &--3{
+            background-image: linear-gradient(to right bottom,
+            rgba($color-blue-light, 0.7),
+            rgba($color-blue, 0.7));
+        }
+    }
+
+    &__details{
+        padding: 3rem;
+        ul{
+            list-style: none;
+            width: 80%;
+            margin: 0 auto;
+            li{
+                text-align: center;
+                font-size: 1.5rem;
+                padding: 1rem;
+
+                &:not(:last-child){
+                    border-bottom: 0.5px solid $color-grey-light;
+                }
+            }
+        }
+    }
+
+    //BACK
+    &__cta{
+        @include center;
+        
+        width: 90%;
+        text-align: center;
+    }
+
+    &__price-box{
+        margin-bottom: 8rem;
+        color: $color-white;
+    }
+
+    &__price-only{
+        text-transform: uppercase;
+        font-size: 1.5rem;
+    }
+
+    &__price-value{
+        font-size: 5rem;
+        font-weight: 100;
+    }
+
+    //HOVER ROTATE
+    &:hover &__content--front{
+        transform: rotateY(-180deg);
+    }
+
+    &:hover &__content--back{
+        transform: rotateY(0deg);
+    }
+
+
+
+    //MEDIA BREAKPOINT
+
+    @media only screen and (max-width: $sm),
+    only screen and (hover: none) {
+        height: auto;
+        background-color: $color-white;
+        box-shadow: 0 1rem 4rem rgba($color-black, 0.2);
+    
+        &__content{
+            height: auto;
+            position: relative;
+            box-shadow: none;
+            
+            &--back{
+                transform: rotateY(0);
+                clip-path: polygon(0 15%,100% 0, 100% 100%, 0% 100%);
+            }
+        }
+    
+        &__details{
+            padding: 1rem 3rem;
+        }
+        //BACK
+        &__cta{
+            position: relative;
+            transform: translate(0);
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding:6rem 3rem 3rem;
+        }
+    
+        &__price-box{
+            margin-bottom: 4rem;
+        }
+    
+        &__price-value{
+            font-size: 5rem;
+        }
+    }
+}

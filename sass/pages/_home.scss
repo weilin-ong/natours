@@ -1,0 +1,116 @@
+.section-about{
+    background-color: $color-secondary;
+    padding: 22rem 0;
+    margin-top: -20vh;
+
+    @include respond($sm){
+        padding: 18rem 0;
+        margin-top: -16vh;
+    }
+
+    @include respond($xs){
+        padding: 15rem 0;
+        margin-top: -11vh;
+    }
+}
+
+.section-feature{
+    padding: 20rem 0;
+    margin-top: -6.5%;
+    background-position: top;
+    background-image: 
+    linear-gradient(to right bottom,
+    rgba($color-primary-light, 0.8),
+    rgba($color-primary-dark, 0.8)),
+    url(../img/nat-4.jpg);
+    background-size: cover;
+
+    transform: skewY(-7deg);
+
+    & > *{
+        transform: skewY(7deg);
+    }
+
+    @include respond($sm){
+        padding: 12rem 0;
+    }
+
+    @include respond($xs){
+        padding: 8rem 0;
+    }
+}
+
+.section-tours{
+    padding: 20rem 0 15rem;
+    margin-top: -6.5%;
+    background-color: $color-secondary;
+
+    @include respond($sm){
+        padding: 18rem 0 10rem;
+    }
+
+    @include respond($sm){
+        padding: 15rem 0 6rem;
+    }
+}
+
+.section-story{
+    padding:15rem 0;
+    position: relative;
+
+    @include respond($sm){
+        padding: 10rem 0;
+    }
+}
+
+.section-book{
+    padding: 15rem 0;
+    background-image:linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+
+    @include respond($sm){
+        padding: 10rem 0;
+    }
+}
+
+.book{
+    background-image:linear-gradient(115deg,
+        rgba($color-white, .95) 0%,
+        rgba($color-white, .8) 35%,
+        rgba($color-white, .65) 50%,
+        rgba($color-white, .2) 60%,
+        transparent 65%), 
+        url(../img/nat-10.jpg);
+    background-size: cover; // if set to 100% it only represent it fits the 100% width
+    border-radius: 3px;
+    box-shadow: 0 2rem 4rem rgba($color-black, 0.2);
+
+    @include respond($md){
+        background-image:linear-gradient(115deg,
+        rgba($color-white, .95) 0%,
+        rgba($color-white, .8) 40%,
+        rgba($color-white, .65) 55%,
+        rgba($color-white, .2) 65%,
+        transparent 70%), 
+        url(../img/nat-10.jpg);
+    }
+
+    @include respond($sm){
+        background-image:linear-gradient(to right,
+        rgba($color-white, .8) 0%,
+        rgba($color-white, .8) 100%), 
+        url(../img/nat-10.jpg);
+    }
+
+    &__form{
+        padding: 6rem;
+        width: 60%;
+
+        @include respond($md){
+            width: 80%;
+        }
+
+        @include respond($sm){
+            width: 100%;
+        }
+    }
+}

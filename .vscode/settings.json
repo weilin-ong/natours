@@ -1,0 +1,25 @@
+{
+    "git.ignoreLimitWarning": true,
+    "liveSassCompile.settings.formats":[
+        {
+            "extensionName": ".css",
+            "format": "compressed",
+            "savePath": "/css"
+        }
+    ],
+    "liveSassCompile.settings.excludeList": [
+       "**/node_modules/**",
+       ".vscode/**"
+    ],
+    "liveSassCompile.settings.generateMap": true,
+    "liveSassCompile.settings.autoprefix": [
+        "> 1%",
+        "last 10 versions"
+    ]
+}
+
+// {
+//     "format": "expanded",
+//     "extensionName": ".css",
+//     "savePath": "/sass"
+// },
